@@ -1,0 +1,77 @@
+dir -- muestra directorios
+cd -- abre directorios
+cd .. -- se retrocede en directorios 
+git init -- crea un repositorio dentro de la carpeta que estemos
+git init -nombre- -- crea una carpeta con -nombre- y adentro le pone un repositorio
+touch -- crea un archivo. Ejemplo "touch index.html"
+git status -- para ver el status de un archivo 
+git add -nombre del archivo- -- para pasarlo del working directory al staging 
+git rm --cached -nombre archivo- -- para devolverlo al working
+git add -A -- Agrega todos los archivos en rojo 
+git rm -f -nombrearchivo- -- Para sacar de staging y borrar definitivamente el archiv
+rm -nombrearchivo- -- para borrar archivo que está en rojo
+
+git commit -m "mensaje de lo que hemos hecho" -- enviamos al repositorio todos los archivos de staging
+git commit -m --amend -- Anexa archivos o cosas a nuestro cambio anterior (esc :wq)
+git log -- ver lo que hemos subido 
+
+git tag -a 0.5 - m 'versión estable del proyecto' -- Así se taggean versiones
+git tag -l -- ver actual versión del proyecto
+git tag 0.3 e23dfb62a50803644acbac741dba089509698223 -- taggear versiones anteriores, con el sha de git log
+git tag -d 1.0 --- cuando te equivocas y quieres borrar esa etiqueta o tag
+git tag -f -a 0.1 -m 'iniciando el proyecto'6e37ca8635494091a209b5ce0301bcdd0e2375c5 --- re tagear una version
+
+git log --oneline  --- para crear un log más abreviado 
+git log --oneline --graph  -- Tengo que jugar con este tag mas
+
+git diff -SHA-  -- Si se pone un sha de versión anterior, te compara los cambios respecto a la versión más nueva 
+git diff -sha- -sha- --- Se comparan ambos shas. En vez de poner los sha, se puede poner los tags "0.5"
+
+git reset --soft -sha- --- Nos elimina los commit desde el sha que pongamos pero no ese sha. Devuelve los archivos al STAGE
+git reset --mixed -sha-  --- Hace lo mismo que el soft pero deja en unstaged toooodos los cambios 
+git reset --hard -sha- --- Borra hasta la madre, NO USARLO. Usarlo con el último SHA si se borraron cosas pasadas por accidente
+
+git branch -nombre de la rama-  --- Sirve para crear ramas 
+git branch -l  --- Lista las ramas 
+git branch -d -nombre de la rama-   --- Eliminar ramas 
+git branch -D -nombre de la rama-   --- Forzar la eliminación así hayan commits adentro
+git branch -m -nombreanterior- -nombrenuevo-  --- Para renombrar 
+
+git checkout -nombredelarama-  --- Para movernos a las diferentes ramas 
+git checkout -sha-  --- Se crea una rama a partir de ese sha, útil para devolverse en el tiempo y cazar bugs 
+git checkout -b -nombredelarama-  --- Se crea una nueva rama y se entra a ella inmediatamente
+
+git merge -nombredelarama-   --- Nos paramos en master y master se mezcla con la rama que queramos
+git rebase -nombredelarama-   ---Es como un merge pero sin ramas 
+git stash  ---- Guarda todo lo que estemos trabajando momentaneamente, para poder cambiar de rama y no perder avances. Esto sin necesidad de hacer commits 
+git stash list --- Muestra los documentos pendientes en stash 
+git stash drop -stashlist-  --- Para eliminar ese stash 
+git stash apply ---- Devuelve el 0 que estaba stasheado 
+git stash apply stash@{3} --- Para devolver ese stash específico 
+
+git cherry-pick -sha-  --- te deja elegir un commit de un branch y ponerlo en otro branch
+
+GITHUB
+git clone  --- Aquí te vas a la carpeta anterior al repo y desde ahí haces git clone y pones url de Github
+
+SE DEBE CREAR LLAVE EN PC Y PEGARLA EN GITHUB
+ssh-keygen -t rsa -b 4096 -C "purple.mv@gmail.com" : Generar llave
+clip < ~/.ssh/id_rsa.pub : Copiar llave 
+
+SUBIR ARCHIVOS A GITHUB
+git remote add origin -clipboard- 
+git remote -v  -- Para ver si enlazamos todo bien 
+git remote remove origin -- Así se quita 
+git fetch origin master  ---- Subir archivos del origin local, los master 
+git merge origin/master --allow-unrelated-histories    --- Haciendo el merge mezclando 
+git pull origin master  <--- Es lo mismo que fetch pero se salta un paso del merge 
+git push origin master <--- Subiendo al remoto 
+git push origin master --tags  <--- para enviar tags del proyecto 
+git push origin RD <--- Para enviar otras ramas 
+
+Para evitar subir archivos delicados o importantes:
+touch .gitignore <---- Para crear el gitignore
+## Se modifica el .gitignore con Atom poniendo el nombre del archivo. Ej "setting.py"
+
+
+
